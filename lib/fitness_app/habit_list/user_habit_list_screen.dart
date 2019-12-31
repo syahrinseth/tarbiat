@@ -4,6 +4,10 @@ import 'package:tabiat/fitness_app/ui_view/title_view.dart';
 import 'package:flutter/material.dart';
 import '../fintness_app_theme.dart';
 import 'package:tabiat/fitness_app/ui_view/habit_view.dart';
+import 'package:tabiat/fitness_app/models/today_habit_data.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:tabiat/fitness_app/ui_view/slidable_action.dart';
+
 
 class UserHabitListScreen extends StatefulWidget {
   const UserHabitListScreen({Key key, this.animationController}) : super(key: key);
@@ -22,6 +26,8 @@ class _UserHabitListScreenState extends State<UserHabitListScreen>
   double topBarOpacity = 0.0;
 
   DateTime today = new DateTime.now();
+
+  List<TodayHabitData> todayHabitList = TodayHabitData.todayHabitList;  
 
   @override
   void initState() {
@@ -59,57 +65,80 @@ class _UserHabitListScreenState extends State<UserHabitListScreen>
   void addAllListData() {
     const int count = 5;
 
-    listViews.add(
-      TitleView(
-        titleTxt: 'Your habit',
-        subTxt: 'Details',
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController,
-            curve:
-                Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController,
-      ),
-    );
+    // listViews.add(
+    //   TitleView(
+    //     titleTxt: 'Your habit',
+    //     subTxt: 'Details',
+    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+    //         parent: widget.animationController,
+    //         curve:
+    //             Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn))),
+    //     animationController: widget.animationController,
+    //   ),
+    // );
+
+  // todayHabitList.forEach((TodayHabitData todayHabit) {
+  //   listViews.add(
+  //     HabitView(
+  //       animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+  //           parent: widget.animationController,
+  //           curve:
+  //               Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
+  //       animationController: widget.animationController,
+  //       name: 'OKOK',
+  //       desc: 'DESC HERE',
+  //     ),
+  //   );
+  // });
+    
 
     listViews.add(
-      NextHabitView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController,
-            curve:
-                Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController,
-      ),
+      new Slidable(
+        delegate: new SlidableDrawerDelegate(),
+        actionExtentRatio: 0.25,
+        child: HabitView(
+          animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+              parent: widget.animationController,
+              curve:
+                  Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
+          animationController: widget.animationController,
+          name: 'OKOK',
+          desc: 'DESC HERE',
+        ),
+        actions: <Widget>[
+          SlidableAction(
+            name: 'Done',
+            color: "#8BC34A",
+          )
+        ],
+        secondaryActions: <Widget>[
+          SlidableAction(
+            name: 'Skip',
+            color: "#039BE5",
+          ),
+        ],
+      )
     );
 
-    listViews.add(
-      HabitView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController,
-            curve:
-                Interval((1 / count) * 3, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController,
-      ),
-    );
+    // listViews.add(
+    //   RunningView(
+    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+    //         parent: widget.animationController,
+    //         curve:
+    //             Interval((1 / count) * 3, 1.0, curve: Curves.fastOutSlowIn))),
+    //     animationController: widget.animationController,
+    //   ),
+    // );
 
-    listViews.add(
-      RunningView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController,
-            curve:
-                Interval((1 / count) * 3, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController,
-      ),
-    );
-
-    listViews.add(
-      RunningView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController,
-            curve:
-                Interval((1 / count) * 3, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController,
-      ),
-    );
+    // listViews.add(
+    //   RunningView(
+    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+    //         parent: widget.animationController,
+    //         curve:
+    //             Interval((1 / count) * 3, 1.0, curve: Curves.fastOutSlowIn))),
+    //     animationController: widget.animationController,
+    //   ),
+    // );
 
   }
 

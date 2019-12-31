@@ -5,8 +5,10 @@ import '../fintness_app_theme.dart';
 class NextHabitView extends StatelessWidget {
   final AnimationController animationController;
   final Animation animation;
+  final String name;
+  final String desc;
 
-  const NextHabitView({Key key, this.animationController, this.animation})
+  const NextHabitView({Key key, this.animationController, this.animation, this.name, this.desc})
       : super(key: key);
 
   @override
@@ -29,8 +31,8 @@ class NextHabitView extends StatelessWidget {
                     builder: (BuildContext context) {
                       // return object of type Dialog
                       return AlertDialog(
-                        title: new Text("Alert Dialog title"),
-                        content: new Text("Alert Dialog body"),
+                        title: new Text(name),
+                        content: new Text("Mark ${this.name} as done?"),
                         actions: <Widget>[
                           // usually buttons at the bottom of the dialog
                           new FlatButton(
@@ -82,7 +84,7 @@ class NextHabitView extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(top: 8.0),
                           child: Text(
-                            'Outdoor Walk',
+                            name,
                             textAlign: TextAlign.left,
                             style: TextStyle(
                               fontFamily: FintnessAppTheme.fontName,

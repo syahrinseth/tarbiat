@@ -4,12 +4,15 @@ import 'package:tabiat/main.dart';
 import 'package:tabiat/design_course/design_course_app_theme.dart';
 
 
-
 class HabitView extends StatelessWidget {
   final AnimationController animationController;
   final Animation animation;
+  final String name;
+  final String desc;
+  final int min;
+  final int index;
 
-  const HabitView({Key key, this.animationController, this.animation})
+  const HabitView({Key key, this.animationController, this.animation, this.name, this.desc, this.min, this.index})
       : super(key: key);
 
   @override
@@ -29,8 +32,8 @@ class HabitView extends StatelessWidget {
                     builder: (BuildContext context) {
                       // return object of type Dialog
                       return AlertDialog(
-                        title: new Text("Alert Dialog title"),
-                        content: new Text("Alert Dialog body"),
+                        title: new Text(name),
+                        content: new Text("Mark ${this.name} as done?"),
                         actions: <Widget>[
                           // usually buttons at the bottom of the dialog
                           new FlatButton(
@@ -95,7 +98,7 @@ class HabitView extends StatelessWidget {
                                             top: 16,
                                           ),
                                           child: Text(
-                                            "Habit Name Here",
+                                            name,
                                             textAlign: TextAlign.left,
                                             style: TextStyle(
                                               fontFamily:
@@ -151,7 +154,11 @@ class HabitView extends StatelessWidget {
                           child: SizedBox(
                             width: 110,
                             height: 110,
-                            child: Image.asset("assets/fitness_app/breakfast.png"),
+                            child: Icon(
+                              Icons.fastfood,
+                              // color: FintnessAppTheme.,
+                              size: 70,
+                            ),
                           ),
                         )
                       ],
