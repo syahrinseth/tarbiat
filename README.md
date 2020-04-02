@@ -1,4 +1,4 @@
-# tabiat
+# Tarbiat
 
 A new Flutter project.
 
