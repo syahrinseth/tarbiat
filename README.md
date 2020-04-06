@@ -1,4 +1,4 @@
-# tabiat
+# TinyHabit
 
 A new Flutter project.
 
