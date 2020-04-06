@@ -1,4 +1,4 @@
-# Tarbiat
+# TinyHabit
 
 A new Flutter project.
 
