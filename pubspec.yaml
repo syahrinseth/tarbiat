@@ -1,5 +1,5 @@
-name: tabiat
-description: A new Flutter project.
+name: tinyhabit
+description: A TinyHabit project
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -23,6 +23,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
+  uuid: ^2.0.4
   font_awesome_flutter: ^8.5.0
   smooth_star_rating: ^1.0.3
   intl: ^0.16.0
@@ -63,15 +64,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: WorkSans
+    - family: CustomFont
       fonts:
-        - asset: assets/fonts/WorkSans-Regular.ttf
-        - asset: assets/fonts/WorkSans-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/WorkSans-SemiBold.ttf
-          weight: 600
-        - asset: assets/fonts/WorkSans-Bold.ttf
-          weight: 700
+        - asset: assets/CustomFont.ttf
     - family: Roboto
       fonts:
         - asset: assets/fonts/Roboto-Bold.ttf
